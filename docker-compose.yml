@@ -20,13 +20,11 @@ services:
       - "8080:8080"
     volumes:
       - ~/Downloads:/usr/src/app/downloads
-    working_dir: /usr/src/app
-    entrypoint: ["sh", "-c", "cp /usr/src/app/downloads/mistral-7b-instruct-v0.1-Q4_K_M.llamafile /usr/src/app/repo/ && chmod +x /usr/src/app/repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile && ./repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile"]
+    working_dir: /usr/src/app/repo
+    entrypoint: ["sh", "-c", "cp /usr/src/app/downloads/mistral-7b-instruct-v0.1-Q4_K_M.llamafile /usr/src/app/repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile && chmod +x /usr/src/app/repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile && /usr/src/app/repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile serve --host 0.0.0.0 --port 8080 --grp-attn-n 2 --grp-attn-w 1024"]
     networks:
       - my-network
 
 networks:
   my-network:
     external: true
-
-
