@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  flask_app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+    depends_on:
+      - llamafile_service
+    networks:
+      - my-network
+
+  llamafile_service:
+    image: alpine:latest
+    container_name: llamafile_service
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/Downloads:/usr/src/app/downloads
+    working_dir: /usr/src/app
+    entrypoint: ["sh", "-c", "cp /usr/src/app/downloads/mistral-7b-instruct-v0.1-Q4_K_M.llamafile /usr/src/app/repo/ && chmod +x /usr/src/app/repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile && ./repo/mistral-7b-instruct-v0.1-Q4_K_M.llamafile"]
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    external: true
+
+
