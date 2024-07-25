@@ -1,16 +1,17 @@
 #!/bin/bash
 
-# Ensure the Docker network exists (this is just a safeguard step now)
-docker network create my-network || true
+# File name
+FILE_NAME="mistral-7b-instruct-v0.2.Q4_K_M.gguf"
 
-# Clone the repository
-git clone <https://github.com/changyuhsin1999/Travel_Assistant> repo
+# Check if the file already exists
+if [ ! -f "/data/$FILE_NAME" ]; then
+    # Download the file
+    wget -O "/data/$FILE_NAME" https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q4_K_M.gguf
+fi
 
-# Change to the repository directory
-cd repo
+# Make the binary executable
+chmod 755 "/data/$FILE_NAME"
 
-# Copy the llamafile from Downloads to the repository directory
-cp ~/Downloads/mistral-7b-instruct-v0.1-Q4_K_M.llamafile .
-
-# Make the llamafile executable
-chmod +x mistral-7b-instruct-v0.1-Q4_K_M.llamafile
+# Execute the binary
+# sh -c for if mac has zsh issues
+sh -c "/data/$FILE_NAME --host 0.0.0.0"
