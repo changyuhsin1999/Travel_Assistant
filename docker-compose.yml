@@ -1,24 +1,19 @@
 version: '3.8'
 
 services:
-  llamafile:
+  app:
     build:
       context: .
-      dockerfile: Dockerfile.llamafile
-    ports:
-      - "8080:8080"
-    volumes:
-      - /home/user:/model  # Mount the home/user directory
-    container_name: llamafile
-
-  chatbot:
-    build:
-      context: ./chatbot
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    depends_on:
-      - llamafile
-    container_name: chatbot
     volumes:
-      - /home/user:/model  # Ensure the chatbot has access to the model as well
+      - ./app:/app  # Mount the app directory for live code updates
+    environment:
+      FLASK_ENV: development  # Set environment variables if needed
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
