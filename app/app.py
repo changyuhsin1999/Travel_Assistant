@@ -76,7 +76,10 @@ def chat_api_v1():
 
 def generate_prompt(conversation):
     # Generate a prompt from the conversation history
-    return "\n".join(f"{msg['role'].capitalize()}: {msg['content']}" for msg in conversation)
+    return "\n".join(
+        f"{msg['role'].capitalize()}: {msg['content']}"
+        for msg in conversation
+    )
 
 
 def stream_llamafile_response(payload):
