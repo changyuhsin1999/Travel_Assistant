@@ -6,9 +6,9 @@ from flask import Flask, render_template, request, jsonify, Response, \
 app = Flask(__name__)
 
 # Configure the OpenAI client to use the llamafile API
-openai.api_base = "http://localhost:8080/v1"  # Replace with your llamafile server's address
+openai.api_base = "http://localhost:8080/v1"  # llamafile server's address
 openai.api_key = "sk-no-key-required"
-LLAMAFILE_URL = "http://127.0.0.1:8080/completion"  # Update to match your API endpoint
+LLAMAFILE_URL = "http://127.0.0.1:8080/completion"  # API endpoint
 
 
 @app.route('/')
