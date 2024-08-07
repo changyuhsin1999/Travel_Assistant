@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="chat-container">
+    <h1>Travel Chatbot</h1>
+    <button class="new-chat-button" onclick="startNewChat()">Start New Chat</button>
+    <div id="chat-box" class="chat-box">
+        <div class="message bot">Welcome to the Travel Chatbot! How can I assist you today?</div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your travel question here...">
+
+        <div id="loading-indicator" class="loading-indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <button id="send-button" class="send-button"  onclick="sendMessage()">Send</button>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
