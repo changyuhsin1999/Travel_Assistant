@@ -1,6 +1,7 @@
 # Travel Assistant Chatbot
 
-![CI/CD Status](https://github.com/changyuhsin1999/Travel_Assistant/blob/main/.github/workflows/docker-image.yml/badge.svg)
+![Docker Build]
+(https://github.com/changyuhsin1999/Travel_Assistant/blob/main/.github/workflows/docker-image.yml/badge.svg)
 
 [![Demo Video](https://img.youtube.com/vi/your-video-id/0.jpg)](https://www.youtube.com/watch?v=your-video-id)
 
