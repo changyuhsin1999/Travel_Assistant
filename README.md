@@ -2,7 +2,11 @@
 
 ![Deploy Badge](https://github.com/changyuhsin1999/Travel_Assistant/actions/workflows/cicd.yml/badge.svg)
 
-[![Demo Video](https://img.youtube.com/vi/your-video-id/0.jpg)](https://www.youtube.com/watch?v=your-video-id)
+
+
+https://github.com/user-attachments/assets/bdba68c5-4eb1-463c-a0a3-c55eca11ea7e
+
+
 
 ## Project Overview
 
