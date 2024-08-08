@@ -198,7 +198,12 @@ In typical use cases, the chatbot maintains a response time of under 500ms, offe
 
 ## CI/CD Pipeline
 
-Our CI/CD pipeline is configured using GitHub Actions, ensuring continuous integration and delivery through:
+CI/CD pipeline is configured using GitHub Actions, ensuring continuous integration and delivery through:
 
-- **Automated Testing**: Runs all tests on each push to the repository.
 - **Build and Deployment**: Automates Docker image builds and ensures seamless deployment.
+
+## Choice of Model
+
+mistral-7b-instruct-v0.2.Q4_0.llamafile
+
+- **Small and easy to integrate chat functionality with 7b-instruct
