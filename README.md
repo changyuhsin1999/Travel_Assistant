@@ -99,8 +99,8 @@ Before setting up the application, ensure you have the following installed:
 Begin by cloning the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/changyuhsin1999/Travel_Assistant.git
+cd Travel_Assistant
 ```
 
 ### 2. Install Python Dependencies
