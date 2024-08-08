@@ -35,10 +35,10 @@ def get_llamafile_response(conversation):
             model="LLaMA_CPP",
             messages=[
                 {
-                    "role": "system",
-                    "content": "You are a travel assistant chatbot. Help users with "
-                    "their travel-related queries. Provide useful website "
-                    "links if possible to help users plan their trips."
+                "role": "system",
+                "content": "You are a travel assistant chatbot. Help users with "
+                "their travel-related queries. Provide useful website "
+                "links if possible to help users plan their trips."
                 },
                 *conversation
             ]
