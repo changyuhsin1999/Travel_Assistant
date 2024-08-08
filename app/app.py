@@ -37,8 +37,8 @@ def get_llamafile_response(conversation):
                 {
                     "role": "system",
                     "content": "You are a travel assistant chatbot. Help users with "
-                               "their travel-related queries. Provide useful website "
-                               "links if possible to help users plan their trips."
+                    "their travel-related queries. Provide useful website "
+                    "links if possible to help users plan their trips."
                 },
                 *conversation
             ]
@@ -59,7 +59,7 @@ def chat_api_v1():
     # Prepare the payload for the llamafile API
     payload = {
         "prompt": "You are a travel assistant chatbot. Help users with their "
-                  "travel-related queries. You are in a conversation with a user"
+        "travel-related queries. You are in a conversation with a user"
                   f"\n\n{generate_prompt(conversation)}\n\nBot:",
         "stream": True,  # Enable streaming
         "n_predict": 400,
