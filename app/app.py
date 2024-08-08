@@ -7,11 +7,13 @@ app = Flask(__name__)
 # Configure the OpenAI client to use the llamafile API
 openai.api_base = "http://localhost:8080/v1"  # llamafile server's address
 openai.api_key = "sk-no-key-required"
-LLAMAFILE_URL = "http://127.0.0.1:8080/"  # Update to match your API endpoint
+LLAMAFILE_URL = "http://127.0.0.1:8080/completion"  # Update to match your API endpoint
+
 
 @app.route('/')
 def chat():
     return render_template('chat.html')
+
 
 @app.route('/api/chat', methods=['POST'])
 def chat_api():
@@ -23,6 +25,7 @@ def chat_api():
 
     # Return the response as JSON
     return jsonify({'response': bot_response})
+
 
 def get_llamafile_response(conversation):
     try:
@@ -42,12 +45,11 @@ def get_llamafile_response(conversation):
         print(f"Error generating response: {e}")
         return "Sorry, I couldn't process your request at the moment."
 
+
 @app.route('/api/v1/chat', methods=['POST'])
 def chat_api_v1():
     # Get the conversation history from the request
     conversation = request.json.get('conversation', [])
-
-    prompt = generate_prompt(conversation)
 
     # Prepare the payload for the llamafile API
     payload = {
@@ -63,9 +65,11 @@ def chat_api_v1():
     # Send request to llamafile and stream response back to client
     return Response(stream_with_context(stream_llamafile_response(payload)), content_type='text/event-stream')
 
+
 def generate_prompt(conversation):
     # Generate a prompt from the conversation history
     return "\n".join(f"{msg['role'].capitalize()}: {msg['content']}" for msg in conversation)
+
 
 def stream_llamafile_response(payload):
     with requests.post(LLAMAFILE_URL, json=payload, stream=True) as response:
@@ -73,5 +77,7 @@ def stream_llamafile_response(payload):
             if line:
                 yield f"{line.decode('utf-8')}\n\n"
 
+
 if __name__ == '__main__':
     app.run(debug=True)
+
