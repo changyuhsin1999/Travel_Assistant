@@ -41,4 +41,4 @@ jobs:
         
     - name: Run health check tests
       run: |
-        python -m unittest discover tests
+        python -m unittest discover -s tests -p "test-*.py"
